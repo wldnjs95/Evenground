@@ -12,17 +12,17 @@ export default function Marquee() {
     'Home',
   ];
 
-  const allWords = [...words, ...words];
+  const allWords = [...words, ...words, ...words];
 
   return (
-    <section className="py-6 md:py-8 bg-[#1a1a1a] overflow-hidden">
+    <section className="marquee-section overflow-hidden">
       <div className="flex animate-marquee">
         {allWords.map((word, index) => (
           <div key={index} className="flex items-center shrink-0">
-            <span className="text-white text-lg md:text-2xl font-light tracking-[0.15em] uppercase px-6 md:px-10">
+            <span className="text-333333 text-lg md:text-2xl font-light tracking-[0.15em] uppercase px-6 md:px-10">
               {word}
             </span>
-            <span className="text-gray-600 text-lg md:text-2xl">/</span>
+            <span className="w-24 md:w-12 inline-block"></span>
           </div>
         ))}
       </div>
