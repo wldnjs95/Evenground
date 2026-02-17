@@ -312,9 +312,9 @@ export default function Classes() {
                       {weekDays.map((day) => {
                         const cls = weeklySchedule[day][rowIdx];
                         return (
-                          <td key={day} className="p-2 align-top border-b border-gray-50">
+                          <td key={day} className="p-2 border-b border-gray-50 h-px">
                             {cls ? (
-                              <div className={`${overviewBgColors[cls.level] || 'bg-gray-50'} p-3 rounded`}>
+                              <div className={`${overviewBgColors[cls.level] || 'bg-gray-50'} p-3 rounded h-full`}>
                                 <p className="text-[11px] text-gray-500 mb-1">{cls.time}</p>
                                 <p className="text-sm font-medium text-[#303030] leading-snug mb-1">{cls.name}</p>
                                 <p className="text-[11px] text-gray-500 leading-relaxed">
@@ -329,7 +329,7 @@ export default function Classes() {
                                 )}
                               </div>
                             ) : (
-                              <div className="p-3" />
+                              <div className="p-3 h-full" />
                             )}
                           </td>
                         );
