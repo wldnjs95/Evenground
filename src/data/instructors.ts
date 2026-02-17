@@ -53,7 +53,7 @@ export const instructors: InstructorData[] = [
     name: 'Allison Li',
     bio: 'Allison started dancing in college with K-pop and discovered a deeper love for movement through Project A. Her choreography journey began two years ago and expanded as she co-created Evenground\'s training team, Fundies, co-directed its first season, and now serves as a director for Project A. Drawn to fast, intuitive movement, she continually searches to expand her palette while finding joy in simply enjoying the music.',
     photo: 'https://images.squarespace-cdn.com/content/v1/64fe62b3499d9e36e405785e/4300bc52-78a0-4cba-88b8-b27f480047c3/Allison.png',
-    instagram: 'lucy.wng',
+    instagram: 'yewp.li',
     genres: ['Choreography'],
   },
   {
