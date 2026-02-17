@@ -62,7 +62,7 @@ export default function Hero() {
           />
         </motion.div>
 
-        <div className="flex flex-col items-center gap-16">
+        <div className="flex flex-col items-center gap-8 md:gap-10">
           <motion.p
             variants={itemVariants}
             className="text-base md:text-lg text-white/90 max-w-xl font-light leading-relaxed text-center"
@@ -73,7 +73,7 @@ export default function Hero() {
           <motion.a
             variants={itemVariants}
             href="/about-us"
-            className="btn bg-white text-black hover:bg-white/90 transition-colors"
+            className="btn btn-white"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
           >

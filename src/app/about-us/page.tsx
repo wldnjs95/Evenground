@@ -67,14 +67,14 @@ export default function AboutUs() {
         <main className="pt-20">
           {/* PART 1: OUR MISSION */}
           <section className="section-padding bg-white">
-            <div className="max-w-[900px]">
+            <div className="max-w-[900px] mx-auto">
               <AnimatedSection variant="fade-in-up">
-                <p className="text-[11px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
+                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
                   Part 01
                 </p>
               </AnimatedSection>
               <AnimatedSection variant="fade-in-up" delay={0.1}>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-14">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-8">
                   OUR MISSION
                 </h1>
               </AnimatedSection>
@@ -115,9 +115,9 @@ export default function AboutUs() {
 
           {/* PART 2: ADMIN STAFF */}
           <section className="section-padding bg-[#fafafa]">
-            <div>
-              <AnimatedSection variant="fade-in-up" className="text-center mb-20">
-                <p className="text-[11px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
+            <div className="max-w-[1200px] mx-auto">
+              <AnimatedSection variant="fade-in-up" className="text-center mb-16">
+                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
                   Part 02
                 </p>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-8">
@@ -181,12 +181,12 @@ export default function AboutUs() {
 
           {/* PART 3: FOUNDING STORY */}
           <section className="section-padding bg-white">
-            <div className="max-w-[900px]">
+            <div className="max-w-[900px] mx-auto">
               <AnimatedSection variant="fade-in-up">
-                <p className="text-[11px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
+                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
                   Part 03
                 </p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-14">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-8">
                   FOUNDING STORY
                 </h2>
               </AnimatedSection>
@@ -216,7 +216,7 @@ export default function AboutUs() {
                       </motion.div>
 
                       {/* Year label */}
-                      <p className="text-[11px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-3">
+                      <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-3">
                         {entry.year}
                       </p>
 

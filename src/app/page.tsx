@@ -18,30 +18,170 @@ export default function Home() {
 
         {/* Welcome Section */}
         <section className="section-padding bg-white">
-          <AnimatedSection variant="fade-in-up" className="max-w-3xl mx-auto text-center">
-            <p className="text-[11px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-4">
-              Welcome
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-8">
-              A Home for Dancers
-            </h2>
-            <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-              Evenground is a street dance studio based in Austin, TX. We provide a space
-              where dancers of all levels come together to learn, grow, and express themselves
-              through movement. Our mission is to cultivate community, creativity, and personal
-              growth through the art of street dance.
-            </p>
-          </AnimatedSection>
+          <div className="max-w-3xl mx-auto text-center">
+            <AnimatedSection variant="fade-in-up">
+              <p className="text-[13px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-6">
+                Welcome
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-8">
+                A Home for Dancers
+              </h2>
+              <p className="text-gray-600 leading-relaxed text-base md:text-lg">
+                Evenground is a street dance studio based in Austin, TX. We provide a space
+                where dancers of all levels come together to learn, grow, and express themselves
+                through movement. Our mission is to cultivate community, creativity, and personal
+                growth through the art of street dance.
+              </p>
+            </AnimatedSection>
+          </div>
+        </section>
+
+        {/* Quick Actions */}
+        <section className="section-padding bg-[#1a1a1a]">
+          <div className="max-w-[1200px] mx-auto text-center">
+            <AnimatedSection variant="fade-in-up">
+              <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-4">
+                Get Started
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-white mb-4">
+                What Can You Do?
+              </h2>
+              <p className="text-gray-400 text-sm mb-12 md:mb-16 max-w-xl mx-auto">
+                Book a class, enter a battle, rent our studio, or grab tickets to our next event.
+              </p>
+            </AnimatedSection>
+
+            <AnimatedSection staggerChildren={0.12} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 text-left">
+              {/* Book a Class */}
+              <AnimatedChild variant="fade-in-up">
+                <a
+                  href="https://evenground.pike13.com/schedule"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border border-white/10 hover:border-[#ffb800]/40 p-6 lg:p-8 transition-all duration-300 hover:bg-white/[0.03] h-full"
+                >
+                  <div className="w-10 h-10 flex items-center justify-center mb-5 border border-white/10 group-hover:border-[#ffb800]/30 transition-colors">
+                    <svg className="w-5 h-5 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-light text-white mb-2 tracking-tight">Book a Class</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-4">
+                    View the schedule and sign up for your next class.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[12px] font-medium tracking-[0.1em] uppercase text-[#ffb800] group-hover:text-white transition-colors">
+                      View Schedule
+                    </span>
+                    <span className="text-[10px] text-white/25 tracking-wider uppercase flex items-center gap-1">
+                      Pike13
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                      </svg>
+                    </span>
+                  </div>
+                </a>
+              </AnimatedChild>
+
+              {/* Enter a Battle */}
+              <AnimatedChild variant="fade-in-up">
+                <a
+                  href="https://events.sweatpals.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border border-white/10 hover:border-[#ffb800]/40 p-6 lg:p-8 transition-all duration-300 hover:bg-white/[0.03] h-full"
+                >
+                  <div className="w-10 h-10 flex items-center justify-center mb-5 border border-white/10 group-hover:border-[#ffb800]/30 transition-colors">
+                    <svg className="w-5 h-5 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-light text-white mb-2 tracking-tight">Enter a Battle</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-4">
+                    Register for Even the Odds, our monthly freestyle battle.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[12px] font-medium tracking-[0.1em] uppercase text-[#ffb800] group-hover:text-white transition-colors">
+                      Register
+                    </span>
+                    <span className="text-[10px] text-white/25 tracking-wider uppercase flex items-center gap-1">
+                      Sweatpals
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                      </svg>
+                    </span>
+                  </div>
+                </a>
+              </AnimatedChild>
+
+              {/* Rent the Studio */}
+              <AnimatedChild variant="fade-in-up">
+                <a
+                  href="https://dnce.club"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border border-white/10 hover:border-[#ffb800]/40 p-6 lg:p-8 transition-all duration-300 hover:bg-white/[0.03] h-full"
+                >
+                  <div className="w-10 h-10 flex items-center justify-center mb-5 border border-white/10 group-hover:border-[#ffb800]/30 transition-colors">
+                    <svg className="w-5 h-5 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 0h.008v.008h-.008V7.5z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-light text-white mb-2 tracking-tight">Rent the Studio</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-4">
+                    Book private studio time for rehearsals, shoots, or lessons.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[12px] font-medium tracking-[0.1em] uppercase text-[#ffb800] group-hover:text-white transition-colors">
+                      Book Now
+                    </span>
+                    <span className="text-[10px] text-white/25 tracking-wider uppercase flex items-center gap-1">
+                      dnce.club
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                      </svg>
+                    </span>
+                  </div>
+                </a>
+              </AnimatedChild>
+
+              {/* Get Tickets */}
+              <AnimatedChild variant="fade-in-up">
+                <a
+                  href="/events"
+                  className="group block border border-white/10 hover:border-[#ffb800]/40 p-6 lg:p-8 transition-all duration-300 hover:bg-white/[0.03] h-full"
+                >
+                  <div className="w-10 h-10 flex items-center justify-center mb-5 border border-white/10 group-hover:border-[#ffb800]/30 transition-colors">
+                    <svg className="w-5 h-5 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-light text-white mb-2 tracking-tight">Get Tickets</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-4">
+                    Grab tickets to The Anni&apos;, our annual showcase event.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[12px] font-medium tracking-[0.1em] uppercase text-[#ffb800] group-hover:text-white transition-colors">
+                      Buy Tickets
+                    </span>
+                    <svg className="w-3.5 h-3.5 text-white/25" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </a>
+              </AnimatedChild>
+            </AnimatedSection>
+          </div>
         </section>
 
         {/* Highlight Events Section */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-[#fafafa]">
           <div className="max-w-[1200px] mx-auto">
             <AnimatedSection variant="fade-in-up" className="text-center mb-12 md:mb-16">
-              <p className="text-[11px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-4">
+              <p className="text-[13px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-4">
                 Upcoming
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight">
                 Highlighted Events
               </h2>
             </AnimatedSection>
@@ -174,10 +314,10 @@ export default function Home() {
         <section id="pricing" className="section-padding bg-[#fafafa]">
           <div className="max-w-[1200px] mx-auto">
             <AnimatedSection variant="fade-in-up" className="text-center mb-16">
-              <p className="text-[11px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-4">
+              <p className="text-[13px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-4">
                 Membership
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight">
                 Pricing
               </h2>
             </AnimatedSection>
@@ -185,7 +325,7 @@ export default function Home() {
             <AnimatedSection staggerChildren={0.15} className="grid md:grid-cols-3 gap-6 lg:gap-8">
               {/* Drop-in */}
               <AnimatedChild variant="fade-in-up" className="bg-white p-8 lg:p-10 border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300">
-                <p className="text-[11px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-3">
+                <p className="text-[13px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-3">
                   Single Class
                 </p>
                 <h3 className="text-2xl font-light mb-1">Drop-in</h3>
@@ -225,7 +365,7 @@ export default function Home() {
                     Popular
                   </span>
                 </div>
-                <p className="text-[11px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-3">
+                <p className="text-[13px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-3">
                   Unlimited
                 </p>
                 <h3 className="text-2xl font-light mb-1">Monthly</h3>
@@ -260,7 +400,7 @@ export default function Home() {
 
               {/* Class Pack */}
               <AnimatedChild variant="fade-in-up" className="bg-white p-8 lg:p-10 border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300">
-                <p className="text-[11px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-3">
+                <p className="text-[13px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-3">
                   Value Pack
                 </p>
                 <h3 className="text-2xl font-light mb-1">10-Class Pack</h3>
@@ -300,7 +440,7 @@ export default function Home() {
         <section className="section-padding bg-[#1a1a1a] text-white text-center relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] via-[#252525] to-[#1a1a1a]" />
           <AnimatedSection variant="fade-in-up" className="max-w-2xl mx-auto relative z-10">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-6">
               Ready to Start?
             </h2>
             <p className="text-gray-400 mb-10 text-base md:text-lg">

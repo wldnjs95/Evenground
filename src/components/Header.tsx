@@ -145,7 +145,8 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 absolute right-6"
+            className="md:hidden p-2 absolute"
+            style={{ right: 'var(--page-gutter)' }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -168,7 +169,7 @@ export default function Header() {
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="md:hidden overflow-hidden bg-white"
           >
-            <div style={{ paddingLeft: '24px', paddingRight: '24px' }} className="flex flex-col gap-1 py-4 border-t border-gray-100">
+            <div style={{ paddingLeft: 'var(--page-gutter)', paddingRight: 'var(--page-gutter)' }} className="flex flex-col gap-1 py-4 border-t border-gray-100">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}

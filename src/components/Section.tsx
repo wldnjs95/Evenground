@@ -25,8 +25,8 @@ export default function Section({
 }: SectionProps) {
   return (
     <section id={id} className={`section-padding ${light ? 'bg-[#fafafa]' : 'bg-white'}`}>
-      <div className="max-w-[1600px] mx-auto">
-        <div className={`grid lg:grid-cols-2 gap-10 lg:gap-20 items-center ${reverse ? 'direction-rtl' : ''}`}>
+      <div className="max-w-[1200px] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           {/* Image */}
           <div className={`${reverse ? 'lg:order-2' : ''}`}>
             <div className="img-container aspect-[4/5] lg:aspect-[3/4]">
@@ -41,11 +41,11 @@ export default function Section({
           {/* Content */}
           <div className={`${reverse ? 'lg:order-1' : ''} lg:px-8`}>
             {subtitle && (
-              <p className="text-[11px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-4">
+              <p className="text-[13px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-6">
                 {subtitle}
               </p>
             )}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-6">
               {title}
             </h2>
             <p className="text-gray-600 leading-relaxed mb-8 max-w-lg">
