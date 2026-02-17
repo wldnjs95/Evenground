@@ -177,7 +177,7 @@ export default function InstructorPage({ params }: { params: Promise<{ slug: str
                   Your first class is free. Use code FIRSTCLASS at checkout.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <Link href="/classes" className="btn btn-white">
+                  <Link href="/classes#instructors" className="btn btn-white">
                     Back to All Instructors
                   </Link>
                   <ExternalLink

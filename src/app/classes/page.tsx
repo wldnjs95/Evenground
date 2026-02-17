@@ -393,7 +393,7 @@ export default function Classes() {
         </section>
 
         {/* Instructor Showcase */}
-        <section className="section-padding bg-[#fafafa]">
+        <section id="instructors" className="section-padding bg-[#fafafa]">
           <div className="max-w-[1200px] mx-auto">
             <div className="mb-12">
               <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-4 flex items-center gap-3">
