@@ -1,66 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageTransition from '@/components/PageTransition';
 import ExternalLink from '@/components/ExternalLink';
-
-/* ------------------------------------------------------------------ */
-/*  Recurring Weekly Schedule                                          */
-/* ------------------------------------------------------------------ */
-
-type DayKey = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday';
-
-interface ScheduleItem {
-  time: string;
-  name: string;
-  instructor: string;
-  level: string;
-  biweekly?: boolean;
-}
-
-const weeklySchedule: Record<DayKey, ScheduleItem[]> = {
-  Monday: [
-    { time: '6:00 PM', name: 'Beg Choreo', instructor: 'Diana Campas / Daniel Broxton', level: 'Beginner', biweekly: true },
-    { time: '7:30 PM', name: 'Int/Adv Choreo', instructor: 'Chris Han / Allison Li', level: 'Int/Adv', biweekly: true },
-    { time: '9:00 PM', name: 'Int/Adv Choreo', instructor: 'Haley Sikes / Daniel Broxton', level: 'Int/Adv', biweekly: true },
-  ],
-  Tuesday: [
-    { time: '6:00 PM', name: 'Beg Choreo', instructor: 'Jess Ye', level: 'Beginner' },
-    { time: '7:30 PM', name: 'Int Choreo', instructor: 'Victoria Kayode', level: 'Intermediate' },
-    { time: '9:00 PM', name: 'Int/Adv Choreo', instructor: 'Caro Gonzalez / Jona Vezia', level: 'Int/Adv', biweekly: true },
-  ],
-  Wednesday: [
-    { time: '6:00 PM', name: 'Contemporary', instructor: 'Kelly Chiu / Jess Ye', level: 'All Levels', biweekly: true },
-    { time: '7:30 PM', name: 'Beg Choreo', instructor: 'Allison Li', level: 'Beginner' },
-    { time: '9:00 PM', name: 'Int/Adv Choreo', instructor: 'Jay Rangan / Son Le', level: 'Int/Adv', biweekly: true },
-    { time: '9:00 PM', name: 'Campbellocking', instructor: 'David Dinh / Garrett Crawford', level: 'All Levels', biweekly: true },
-  ],
-  Thursday: [
-    { time: '6:00 PM', name: 'Beg House', instructor: 'Chris Han', level: 'Beginner' },
-    { time: '7:30 PM', name: 'Int Choreo', instructor: 'Mariko Llosa / Britney Thai', level: 'Intermediate', biweekly: true },
-    { time: '9:00 PM', name: 'Int/Adv Choreo', instructor: 'Santana Williams / Lili Offield', level: 'Int/Adv', biweekly: true },
-  ],
-  Friday: [
-    { time: '6:00 PM', name: 'Beg Hip-Hop', instructor: 'Son Le', level: 'Beginner' },
-    { time: '7:30 PM', name: 'Kpop Choreo', instructor: 'Jazmin Macedo', level: 'All Levels' },
-    { time: '9:00 PM', name: 'Int/Adv Choreo', instructor: 'Krishna Basude / Alex John', level: 'Int/Adv', biweekly: true },
-  ],
-  Saturday: [
-    { time: '1:00 PM', name: 'Beg Choreo', instructor: 'Alex John / Terra Turner', level: 'Beginner', biweekly: true },
-    { time: '2:30 PM', name: 'Kpop Choreo', instructor: 'Grace Zhang / Troy Stockman', level: 'All Levels', biweekly: true },
-    { time: '4:00 PM', name: 'Int/Adv Choreo', instructor: 'Andrea Castillo / Claribella Reeve', level: 'Int/Adv', biweekly: true },
-  ],
-};
-
-const weekDays: DayKey[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-const shortDayMap: Record<DayKey, string> = {
-  Monday: 'Mon', Tuesday: 'Tue', Wednesday: 'Wed',
-  Thursday: 'Thu', Friday: 'Fri', Saturday: 'Sat',
-};
+import { weeklySchedule, weekDays, shortDayMap, type DayKey } from '@/data/schedule';
 
 /* ------------------------------------------------------------------ */
 /*  Instructor Data (derived from weekly schedule)                     */
@@ -203,7 +150,6 @@ const overviewBgColors: Record<string, string> = {
 
 export default function Classes() {
   const [activeGenre, setActiveGenre] = useState('All');
-  const [activeCard, setActiveCard] = useState<string | null>(null);
   const [openLevel, setOpenLevel] = useState<string | null>(null);
 
   const filtered = activeGenre === 'All'
@@ -458,7 +404,7 @@ export default function Classes() {
                 {genres.map((genre) => (
                   <button
                     key={genre}
-                    onClick={() => { setActiveGenre(genre); setActiveCard(null); }}
+                    onClick={() => setActiveGenre(genre)}
                     className={`relative px-5 py-3 text-sm tracking-wide whitespace-nowrap transition-colors ${
                       activeGenre === genre
                         ? 'text-[#303030] font-medium'
@@ -487,7 +433,7 @@ export default function Classes() {
             <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
               <AnimatePresence mode="popLayout">
                 {filtered.map((inst) => {
-                  const isActive = activeCard === inst.name;
+                  const slug = inst.name.toLowerCase().replace(/\s+/g, '-');
                   return (
                     <motion.div
                       key={inst.name}
@@ -496,92 +442,98 @@ export default function Classes() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.3 }}
-                      className="relative bg-white border border-gray-100 overflow-hidden cursor-pointer group hover:border-gray-200 transition-colors"
-                      onClick={() => setActiveCard(isActive ? null : inst.name)}
                     >
-                      {/* Default: Avatar + Name + Genre */}
-                      <div className="flex flex-col items-center justify-center text-center px-4 py-8 sm:py-10">
-                        <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
-                          <svg className="w-9 h-9 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                          </svg>
-                        </div>
-                        <p className="text-sm font-medium text-[#303030] mb-1.5">
-                          {inst.name}
-                        </p>
-                        <div className="flex flex-wrap justify-center gap-x-1.5 gap-y-0.5">
-                          {inst.genres.map((g) => (
-                            <span
-                              key={g}
-                              className="text-[11px] font-medium tracking-wide uppercase"
-                              style={{ color: genreAccents[g] || '#a3a3a3' }}
-                            >
-                              {g}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Hover / Tap Overlay */}
-                      <div
-                        className={`absolute inset-0 flex flex-col justify-between p-4 sm:p-5 transition-all duration-300 ease-out ${
-                          isActive
-                            ? 'opacity-100 translate-y-0'
-                            : 'opacity-0 translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto'
-                        }`}
-                        style={{ backgroundColor: 'rgba(26, 26, 26, 0.93)' }}
+                      <Link
+                        href={`/classes/${slug}`}
+                        className="relative block bg-white border border-gray-100 overflow-hidden group hover:border-gray-200 transition-colors"
                       >
-                        {/* Top: Name + Genre */}
-                        <div>
-                          <p className="text-sm font-medium text-white mb-1">
+                        {/* Default: Avatar + Name + Genre + Levels */}
+                        <div className="flex flex-col items-center justify-center text-center px-4 py-8 sm:py-10">
+                          <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                            <svg className="w-9 h-9 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                          </div>
+                          <p className="text-sm font-medium text-[#303030] mb-1.5">
                             {inst.name}
                           </p>
-                          <div className="flex flex-wrap gap-x-1.5">
+                          <div className="flex flex-wrap justify-center gap-x-1.5 gap-y-0.5">
                             {inst.genres.map((g) => (
                               <span
                                 key={g}
                                 className="text-[11px] font-medium tracking-wide uppercase"
-                                style={{ color: genreAccents[g] === '#303030' ? '#a3a3a3' : genreAccents[g] }}
+                                style={{ color: genreAccents[g] || '#a3a3a3' }}
                               >
                                 {g}
                               </span>
                             ))}
                           </div>
-                        </div>
-
-                        {/* Schedule */}
-                        <div className="space-y-1 my-3">
-                          {inst.classes.map((cls, idx) => (
-                            <div key={idx} className="text-[11px] leading-relaxed">
-                              <span className="text-gray-500">
-                                {shortDayMap[cls.day]} {cls.time.replace(':00', '').replace(' PM', 'p').replace(' AM', 'a')}
+                          <div className="flex flex-wrap justify-center gap-1 mt-2">
+                            {inst.levels.map((level) => (
+                              <span
+                                key={level}
+                                className={`text-[11px] font-medium tracking-wider uppercase px-2 py-0.5 rounded-full ${levelColors[level] || 'bg-gray-100 text-gray-600'}`}
+                              >
+                                {level}
                               </span>
-                              <span className="text-gray-300 ml-1.5">{cls.name}</span>
-                              {cls.biweekly && <span className="text-purple-400 ml-1">·bi</span>}
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
 
-                        {/* Level Badges */}
-                        <div className="flex flex-wrap gap-1.5">
-                          {inst.levels.map((level) => (
-                            <span
-                              key={level}
-                              className={`text-[11px] font-medium tracking-wider uppercase px-2 py-0.5 rounded-full ${levelColors[level] || 'bg-gray-100 text-gray-600'}`}
-                            >
-                              {level}
-                            </span>
-                          ))}
+                        {/* Hover Overlay (desktop only) */}
+                        <div
+                          className="absolute inset-0 flex flex-col justify-between p-4 sm:p-5 transition-all duration-300 ease-out opacity-0 translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto"
+                          style={{ backgroundColor: 'rgba(26, 26, 26, 0.93)' }}
+                        >
+                          <div>
+                            <p className="text-sm font-medium text-white mb-1">
+                              {inst.name}
+                            </p>
+                            <div className="flex flex-wrap gap-x-1.5">
+                              {inst.genres.map((g) => (
+                                <span
+                                  key={g}
+                                  className="text-[11px] font-medium tracking-wide uppercase"
+                                  style={{ color: genreAccents[g] === '#303030' ? '#a3a3a3' : genreAccents[g] }}
+                                >
+                                  {g}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="space-y-1 my-3">
+                            {inst.classes.map((cls, idx) => (
+                              <div key={idx} className="text-[11px] leading-relaxed">
+                                <span className="text-gray-500">
+                                  {shortDayMap[cls.day]} {cls.time.replace(':00', '').replace(' PM', 'p').replace(' AM', 'a')}
+                                </span>
+                                <span className="text-gray-300 ml-1.5">{cls.name}</span>
+                                {cls.biweekly && <span className="text-purple-400 ml-1">·bi</span>}
+                              </div>
+                            ))}
+                          </div>
+
+                          <div className="flex flex-wrap gap-1.5">
+                            {inst.levels.map((level) => (
+                              <span
+                                key={level}
+                                className={`text-[11px] font-medium tracking-wider uppercase px-2 py-0.5 rounded-full ${levelColors[level] || 'bg-gray-100 text-gray-600'}`}
+                              >
+                                {level}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     </motion.div>
                   );
                 })}
               </AnimatePresence>
             </motion.div>
 
-            <p className="text-[11px] text-gray-500 text-center mt-6 lg:hidden">
-              Tap a card to see schedule details
+            <p className="text-[11px] text-gray-500 text-center mt-6">
+              Tap an instructor to view their profile
             </p>
           </div>
         </section>

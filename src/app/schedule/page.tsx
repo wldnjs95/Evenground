@@ -6,62 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageTransition from '@/components/PageTransition';
 import ExternalLink from '@/components/ExternalLink';
-
-type DayKey = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday';
-
-interface ClassItem {
-  time: string;
-  name: string;
-  instructor: string;
-  level: string;
-  genre: string;
-  duration: string;
-  biweekly?: boolean;
-}
-
-const scheduleData: Record<DayKey, ClassItem[]> = {
-  Monday: [
-    { time: '6:00 PM', name: 'Beg Choreo', instructor: 'Diana Campas / Daniel Broxton', level: 'Beginner', genre: 'Choreography', duration: '90 min', biweekly: true },
-    { time: '7:30 PM', name: 'Int/Adv Choreo', instructor: 'Chris Han / Allison Li', level: 'Int/Adv', genre: 'Choreography', duration: '90 min', biweekly: true },
-    { time: '9:00 PM', name: 'Int/Adv Choreo', instructor: 'Haley Sikes / Daniel Broxton', level: 'Int/Adv', genre: 'Choreography', duration: '90 min', biweekly: true },
-  ],
-  Tuesday: [
-    { time: '6:00 PM', name: 'Beg Choreo', instructor: 'Jess Ye', level: 'Beginner', genre: 'Choreography', duration: '90 min' },
-    { time: '7:30 PM', name: 'Int Choreo', instructor: 'Victoria Kayode', level: 'Intermediate', genre: 'Choreography', duration: '90 min' },
-    { time: '9:00 PM', name: 'Int/Adv Choreo', instructor: 'Caro Gonzalez / Jona Vezia', level: 'Int/Adv', genre: 'Choreography', duration: '90 min', biweekly: true },
-  ],
-  Wednesday: [
-    { time: '6:00 PM', name: 'Contemporary', instructor: 'Kelly Chiu / Jess Ye', level: 'All Levels', genre: 'Contemporary', duration: '90 min', biweekly: true },
-    { time: '7:30 PM', name: 'Beg Choreo', instructor: 'Allison Li', level: 'Beginner', genre: 'Choreography', duration: '90 min' },
-    { time: '9:00 PM', name: 'Int/Adv Choreo', instructor: 'Jay Rangan / Son Le', level: 'Int/Adv', genre: 'Choreography', duration: '90 min', biweekly: true },
-    { time: '9:00 PM', name: 'Campbellocking', instructor: 'David Dinh / Garrett Crawford', level: 'All Levels', genre: 'Locking', duration: '90 min', biweekly: true },
-  ],
-  Thursday: [
-    { time: '6:00 PM', name: 'Beg House', instructor: 'Chris Han', level: 'Beginner', genre: 'House', duration: '90 min' },
-    { time: '7:30 PM', name: 'Int Choreo', instructor: 'Mariko Llosa / Britney Thai', level: 'Intermediate', genre: 'Choreography', duration: '90 min', biweekly: true },
-    { time: '9:00 PM', name: 'Int/Adv Choreo', instructor: 'Santana Williams / Lili Offield', level: 'Int/Adv', genre: 'Choreography', duration: '90 min', biweekly: true },
-  ],
-  Friday: [
-    { time: '6:00 PM', name: 'Beg Hip-Hop', instructor: 'Son Le', level: 'Beginner', genre: 'Hip Hop', duration: '90 min' },
-    { time: '7:30 PM', name: 'Kpop Choreo', instructor: 'Jazmin Macedo', level: 'All Levels', genre: 'K-Pop', duration: '90 min' },
-    { time: '9:00 PM', name: 'Int/Adv Choreo', instructor: 'Krishna Basude / Alex John', level: 'Int/Adv', genre: 'Choreography', duration: '90 min', biweekly: true },
-  ],
-  Saturday: [
-    { time: '1:00 PM', name: 'Beg Choreo', instructor: 'Alex John / Terra Turner', level: 'Beginner', genre: 'Choreography', duration: '90 min', biweekly: true },
-    { time: '2:30 PM', name: 'Kpop Choreo', instructor: 'Grace Zhang / Troy Stockman', level: 'All Levels', genre: 'K-Pop', duration: '90 min', biweekly: true },
-    { time: '4:00 PM', name: 'Int/Adv Choreo', instructor: 'Andrea Castillo / Claribella Reeve', level: 'Int/Adv', genre: 'Choreography', duration: '90 min', biweekly: true },
-  ],
-};
-
-const days: DayKey[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const shortDays: Record<DayKey, string> = {
-  Monday: 'Mon',
-  Tuesday: 'Tue',
-  Wednesday: 'Wed',
-  Thursday: 'Thu',
-  Friday: 'Fri',
-  Saturday: 'Sat',
-};
+import { weeklySchedule as scheduleData, weekDays as days, shortDayMap as shortDays, type DayKey } from '@/data/schedule';
 
 const levelColors: Record<string, string> = {
   'Beginner': 'bg-[#e6efe6] text-[#3d6b3d]',

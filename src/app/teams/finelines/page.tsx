@@ -161,7 +161,7 @@ export default function FineLines() {
           </section>
 
           {/* Members Section */}
-          <section className="section-padding bg-[#fafafa]">
+          <section className="section-padding bg-white">
             <div className="max-w-[1200px] mx-auto">
               <AnimatedSection variant="fade-in-up" className="text-center mb-16">
                 <p className="text-[13px] font-medium tracking-[0.2em] uppercase mb-4" style={{ color: teamData.accent }}>

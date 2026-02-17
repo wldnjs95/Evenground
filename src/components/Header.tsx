@@ -42,6 +42,9 @@ export default function Header() {
     setIsCommunityOpen(false);
   };
 
+  const hasDarkHero = pathname === '/' || pathname === '/teams';
+  const isHeroVisible = hasDarkHero && !isScrolled;
+
   const isActive = (href: string) => pathname === href;
   const isPricingActive = pricingSubMenu.some((item) => pathname === item.href) || pathname === '/pricing';
   const isCommunityActive = communitySubMenu.some((item) => pathname === item.href);
@@ -75,7 +78,9 @@ export default function Header() {
                 key={link.name}
                 href={link.href}
                 className={`text-[15px] font-light tracking-[0.02em] transition-colors relative ${
-                  isActive(link.href) ? 'text-black' : 'hover:text-gray-600'
+                  isHeroVisible
+                    ? (isActive(link.href) ? 'text-white' : 'text-white/70 hover:text-white')
+                    : (isActive(link.href) ? 'text-black' : 'hover:text-gray-600')
                 }`}
                 onMouseEnter={closeAll}
               >
@@ -98,7 +103,9 @@ export default function Header() {
             >
               <button
                 className={`text-[15px] font-light tracking-[0.02em] flex items-center gap-1 transition-colors relative ${
-                  isPricingActive ? 'text-black' : 'hover:text-gray-600'
+                  isHeroVisible
+                    ? (isPricingActive ? 'text-white' : 'text-white/70 hover:text-white')
+                    : (isPricingActive ? 'text-black' : 'hover:text-gray-600')
                 }`}
               >
                 Pricing
@@ -156,7 +163,9 @@ export default function Header() {
             >
               <button
                 className={`text-[15px] font-light tracking-[0.02em] flex items-center gap-1 transition-colors relative ${
-                  isCommunityActive ? 'text-black' : 'hover:text-gray-600'
+                  isHeroVisible
+                    ? (isCommunityActive ? 'text-white' : 'text-white/70 hover:text-white')
+                    : (isCommunityActive ? 'text-black' : 'hover:text-gray-600')
                 }`}
               >
                 Community
@@ -210,7 +219,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 absolute"
+            className={`md:hidden p-2 absolute transition-colors duration-300 ${isHeroVisible && !isMenuOpen ? 'text-white' : 'text-black'}`}
             style={{ right: 'var(--page-gutter)' }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
