@@ -69,7 +69,8 @@ export default function AboutUs() {
           <section className="section-padding bg-white">
             <div className="max-w-[900px] mx-auto">
               <AnimatedSection variant="fade-in-up">
-                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
+                <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
+                  <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                   Part 01
                 </p>
               </AnimatedSection>
@@ -117,7 +118,8 @@ export default function AboutUs() {
           <section className="section-padding bg-[#fafafa]">
             <div className="max-w-[1200px] mx-auto">
               <AnimatedSection variant="fade-in-up" className="text-center mb-16">
-                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
+                <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-6 flex items-center gap-3 justify-center">
+                  <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                   Part 02
                 </p>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-8">
@@ -135,7 +137,7 @@ export default function AboutUs() {
                   transition={{ duration: 0.3 }}
                   className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gray-200 overflow-hidden mb-6 relative ring-4 ring-[#ffb800]/20"
                 >
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+                  <div className="absolute inset-0 flex items-center justify-center text-gray-500">
                     <svg className="w-20 h-20" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                     </svg>
@@ -144,7 +146,7 @@ export default function AboutUs() {
                 <p className="text-sm tracking-[0.15em] uppercase text-[#303030] font-medium">
                   {founder.name}
                 </p>
-                <p className="text-xs text-gray-400 mt-2">
+                <p className="text-xs text-gray-500 mt-2">
                   {founder.role}
                 </p>
               </AnimatedSection>
@@ -161,7 +163,7 @@ export default function AboutUs() {
                       transition={{ duration: 0.2 }}
                       className="w-28 h-28 md:w-32 md:h-32 rounded-full bg-gray-200 overflow-hidden mb-5 relative cursor-pointer"
                     >
-                      <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+                      <div className="absolute inset-0 flex items-center justify-center text-gray-500">
                         <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                         </svg>
@@ -170,7 +172,7 @@ export default function AboutUs() {
                     <p className="text-xs tracking-[0.15em] uppercase text-[#303030] font-medium">
                       {member.name}
                     </p>
-                    <p className="text-[11px] text-gray-400 mt-2">
+                    <p className="text-[11px] text-gray-500 mt-2">
                       {member.role}
                     </p>
                   </AnimatedChild>
@@ -183,7 +185,8 @@ export default function AboutUs() {
           <section className="section-padding bg-white">
             <div className="max-w-[900px] mx-auto">
               <AnimatedSection variant="fade-in-up">
-                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
+                <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
+                  <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                   Part 03
                 </p>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-8">
@@ -216,7 +219,7 @@ export default function AboutUs() {
                       </motion.div>
 
                       {/* Year label */}
-                      <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-3">
+                      <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-3">
                         {entry.year}
                       </p>
 
@@ -225,7 +228,7 @@ export default function AboutUs() {
                         {entry.text}
                       </p>
                       {entry.funFact && (
-                        <p className="text-sm text-gray-400 mt-5 italic leading-6 border-l-2 border-[#ffb800]/30 pl-4">
+                        <p className="text-sm text-gray-500 mt-5 italic leading-6 border-l-2 border-[#ffb800]/30 pl-4">
                           Fun Fact: {entry.funFact}
                         </p>
                       )}

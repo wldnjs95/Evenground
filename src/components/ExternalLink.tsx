@@ -39,7 +39,7 @@ export default function ExternalLink({
         />
       </svg>
       {showPlatform && platform && (
-        <span className="ml-2 text-[10px] opacity-70 tracking-wider uppercase font-normal">
+        <span className="ml-2 text-[11px] opacity-70 tracking-wider uppercase font-normal">
           on {platform}
         </span>
       )}

@@ -100,9 +100,9 @@ function StudioCard({ studio, index }: { studio: typeof studios[number]; index: 
             </span>
           </div>
           <p className="text-4xl font-light text-[#303030] mb-1">
-            ${studio.price}<span className="text-lg text-gray-400">/hour</span>
+            ${studio.price}<span className="text-lg text-gray-500">/hour</span>
           </p>
-          <p className="text-xs text-gray-400 mb-8">1 hour minimum</p>
+          <p className="text-xs text-gray-500 mb-8">1 hour minimum</p>
 
           <div className="space-y-3 flex-1">
             {studio.features.map((feature) => (
@@ -131,7 +131,8 @@ export default function StudioRentalPricing() {
           <section className="section-padding bg-white">
             <div className="max-w-[900px]">
               <AnimatedSection variant="fade-in-up">
-                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
+                <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
+                  <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                   Private Space
                 </p>
               </AnimatedSection>
@@ -167,7 +168,7 @@ export default function StudioRentalPricing() {
                   whileTap={{ scale: 0.98 }}
                 >
                   Request Rental
-                  <span className="text-[10px] text-white/40 tracking-wider uppercase flex items-center gap-1">
+                  <span className="text-[11px] text-white/60 tracking-wider uppercase flex items-center gap-1">
                     dnce.club
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
@@ -185,7 +186,7 @@ export default function StudioRentalPricing() {
                 <p className="text-sm font-medium text-[#303030] mb-2">Rental Hours</p>
                 <p className="text-xs text-gray-500">Mon–Fri: 6PM–10:30PM &nbsp;·&nbsp; Sat: 1PM–5:30PM &nbsp;·&nbsp; Sun: 8PM–10PM</p>
               </div>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-gray-500">
                 Booking &amp; availability managed on dnce.club
               </p>
             </AnimatedSection>

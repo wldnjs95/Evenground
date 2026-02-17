@@ -280,7 +280,7 @@ export default function Teams() {
                 <p className="text-lg md:text-xl font-light text-white/70 mb-2">
                   {team.subtitle}
                 </p>
-                <p className="text-sm md:text-base text-white/40 max-w-lg">
+                <p className="text-sm md:text-base text-white/60 max-w-lg">
                   {team.tagline}
                 </p>
               </motion.div>
@@ -369,7 +369,7 @@ export default function Teams() {
                       >
                         {stat.value}
                       </motion.p>
-                      <p className="text-xs text-white/40 uppercase tracking-[0.15em] mt-1">
+                      <p className="text-xs text-white/60 uppercase tracking-[0.15em] mt-1">
                         {stat.label}
                       </p>
                     </div>

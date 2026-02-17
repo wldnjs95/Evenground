@@ -248,7 +248,8 @@ export default function Home() {
               {/* Content */}
               <AnimatedSection variant="fade-in-up">
                 <div className="lg:px-4">
-                  <p className="text-[14px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-4">
+                  <p className="text-[14px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-4 flex items-center gap-3">
+                    <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                     Get Started
                   </p>
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight mb-4">
@@ -273,7 +274,8 @@ export default function Home() {
               {/* Content */}
               <AnimatedSection variant="fade-in-up">
                 <div className="lg:px-4">
-                  <p className="text-[14px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-4">
+                  <p className="text-[14px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-4 flex items-center gap-3">
+                    <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                     Our People
                   </p>
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight mb-4">
@@ -320,7 +322,8 @@ export default function Home() {
               {/* Content */}
               <AnimatedSection variant="fade-in-up">
                 <div className="lg:px-4">
-                  <p className="text-[14px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-4">
+                  <p className="text-[14px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-4 flex items-center gap-3">
+                    <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                     Our Story
                   </p>
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-light tracking-tight mb-4">

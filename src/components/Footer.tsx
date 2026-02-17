@@ -105,8 +105,8 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Evenground. All rights reserved.
           </p>
           <div className="flex gap-6 text-[11px] text-gray-600">
-            <Link href="#classes" className="hover:text-[#303030] transition-colors">Classes</Link>
-            <Link href="#pricing" className="hover:text-[#303030] transition-colors">Pricing</Link>
+            <Link href="/classes" className="hover:text-[#303030] transition-colors">Classes</Link>
+            <Link href="/pricing" className="hover:text-[#303030] transition-colors">Pricing</Link>
             <Link href="/about-us" className="hover:text-[#303030] transition-colors">About</Link>
           </div>
         </div>

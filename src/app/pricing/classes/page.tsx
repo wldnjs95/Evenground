@@ -50,7 +50,8 @@ export default function ClassPricing() {
           <section className="section-padding bg-white">
             <div className="max-w-[900px]">
               <AnimatedSection variant="fade-in-up">
-                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
+                <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
+                  <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                   Simple &amp; Transparent
                 </p>
               </AnimatedSection>
@@ -75,7 +76,8 @@ export default function ClassPricing() {
                 transition={{ duration: 0.2 }}
                 className="bg-white border-2 border-[#ffb800] p-8 md:p-12 text-center max-w-lg w-full shadow-sm"
               >
-                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-4">
+                <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-4 flex items-center gap-3 justify-center">
+                  <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                   New Students
                 </p>
                 <h2 className="text-2xl md:text-3xl font-light text-[#303030] mb-2">
@@ -87,7 +89,7 @@ export default function ClassPricing() {
                 <p className="text-sm text-gray-500 mb-2">
                   Use code <span className="font-semibold text-[#303030]">FIRSTCLASS</span> at checkout
                 </p>
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-gray-500">
                   (Only applies to regular classes)
                 </p>
               </motion.div>
@@ -120,7 +122,7 @@ export default function ClassPricing() {
                       }`}
                     >
                       {index === 3 && (
-                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#ffb800] text-white text-[10px] font-medium tracking-wider uppercase px-3 py-1 rounded-full">
+                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#ffb800] text-white text-[11px] font-medium tracking-wider uppercase px-3 py-1 rounded-full">
                           Best Value
                         </span>
                       )}
@@ -129,17 +131,17 @@ export default function ClassPricing() {
                         ${pack.price}
                       </p>
                       {pack.perClass && (
-                        <p className="text-xs text-gray-400 mb-4">
+                        <p className="text-xs text-gray-500 mb-4">
                           ${pack.perClass.toFixed(2)} per class
                         </p>
                       )}
                       {!pack.perClass && (
-                        <p className="text-xs text-gray-400 mb-4">
+                        <p className="text-xs text-gray-500 mb-4">
                           {pack.description}
                         </p>
                       )}
                       {pack.perClass && (
-                        <span className="inline-block text-[12px] font-medium text-[#d49a00] tracking-wider uppercase bg-[#d49a00]/10 px-3 py-1 rounded-full">
+                        <span className="inline-block text-[12px] font-medium text-[#8a6b00] tracking-wider uppercase bg-[#8a6b00]/10 px-3 py-1 rounded-full">
                           {pack.description}
                         </span>
                       )}
@@ -149,7 +151,7 @@ export default function ClassPricing() {
               </AnimatedSection>
 
               <AnimatedSection variant="fade-in" delay={0.4}>
-                <p className="text-center text-xs text-gray-400 mt-10 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-center text-xs text-gray-500 mt-10 max-w-2xl mx-auto leading-relaxed">
                   Class passes are to be used for our regular scheduled classes only. All class passes expire <span className="font-semibold">60 days</span> from date of purchase. Final Sale, non-transferable.
                 </p>
               </AnimatedSection>
@@ -234,7 +236,7 @@ export default function ClassPricing() {
                         </span>
                         <div>
                           <p className="font-medium text-[#303030]">{policy.type}</p>
-                          <p className="text-sm text-gray-400 mt-0.5">{policy.description}</p>
+                          <p className="text-sm text-gray-500 mt-0.5">{policy.description}</p>
                         </div>
                       </div>
                       <p className={`text-sm font-medium ${policy.type === 'Early Cancel' ? 'text-green-500' : 'text-gray-500'}`}>
@@ -246,7 +248,7 @@ export default function ClassPricing() {
               </AnimatedSection>
 
               <AnimatedSection variant="fade-in" delay={0.3}>
-                <p className="text-sm text-gray-400 mt-16">
+                <p className="text-sm text-gray-500 mt-16">
                   * Our studio is limited to students <span className="font-semibold">13 years or older</span>
                 </p>
               </AnimatedSection>

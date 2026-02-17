@@ -131,7 +131,7 @@ const genres = ['All', ...Array.from(new Set(instructors.flatMap((i) => i.genres
 /* ------------------------------------------------------------------ */
 
 const levelColors: Record<string, string> = {
-  'Beginner': 'bg-[#e6efe6] text-[#4a7a4a]',
+  'Beginner': 'bg-[#e6efe6] text-[#3d6b3d]',
   'Intermediate': 'bg-[#f0ead8] text-[#6b5a35]',
   'Int/Adv': 'bg-[#f0e2e2] text-[#7a4545]',
   'Advanced': 'bg-[#f0e2e2] text-[#7a4545]',
@@ -154,8 +154,8 @@ const B = ({ children }: { children: React.ReactNode }) => (
 const levelGuide = [
   {
     level: 'Beginner',
-    badge: 'bg-[#e6efe6] text-[#4a7a4a]',
-    accent: '#6a9a6a',
+    badge: 'bg-[#e6efe6] text-[#3d6b3d]',
+    accent: '#4a8a4a',
     short: 'No experience needed',
     description: (
       <>These classes are suited for dancers with <B>little to no experience</B> or for those who would like to revisit their fundamentals in a slower pace environment.</>
@@ -164,7 +164,7 @@ const levelGuide = [
   {
     level: 'Intermediate',
     badge: 'bg-[#f0ead8] text-[#6b5a35]',
-    accent: '#a08850',
+    accent: '#c08520',
     short: 'Comfortable with fundamentals',
     description: (
       <>These classes are suited for dancers with moderate experience who feel comfortable in a class setting and want to <B>learn more complex movements</B> that combine many fundamentals learned in the beginner classes.</>
@@ -173,7 +173,7 @@ const levelGuide = [
   {
     level: 'Int/Advanced',
     badge: 'bg-[#f0e2e2] text-[#7a4545]',
-    accent: '#a06060',
+    accent: '#b84a4a',
     short: 'Experienced, fast-paced',
     description: (
       <>This class is suited for dancers with extensive experience who are comfortable in a <B>fast paced environment</B> and looking to push their dance to the next level.</>
@@ -182,7 +182,7 @@ const levelGuide = [
   {
     level: 'Open Level',
     badge: 'bg-[#e2e6f0] text-[#454a6a]',
-    accent: '#6070a0',
+    accent: '#4a6abf',
     short: 'All levels welcome',
     description: (
       <>This class is suited for everybody <B>from beginners to advanced dancers</B>! These classes usually take a set of moves or concepts through a progression, where every level dancer can find something to work on.</>
@@ -204,7 +204,7 @@ const overviewBgColors: Record<string, string> = {
 export default function Classes() {
   const [activeGenre, setActiveGenre] = useState('All');
   const [activeCard, setActiveCard] = useState<string | null>(null);
-  const [showGuide, setShowGuide] = useState(false);
+  const [openLevel, setOpenLevel] = useState<string | null>(null);
 
   const filtered = activeGenre === 'All'
     ? instructors
@@ -223,99 +223,102 @@ export default function Classes() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="max-w-[900px]">
-            <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
-              Train With Us
-            </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-8">
-              CLASSES
-            </h1>
-            <p className="text-gray-500 max-w-xl">
-              Meet our instructors and find the class that fits your style.
-              From Choreography to House, K-Pop to Locking — all experience levels welcome.
-            </p>
+          <div className="max-w-[1200px] mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+              {/* Left: Title */}
+              <div>
+                <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
+                  <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
+                  Train With Us
+                </p>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-8">
+                  CLASSES
+                </h1>
+                <p className="text-gray-500 max-w-xl">
+                  Meet our instructors and find the class that fits your style.
+                  From Choreography to House, K-Pop to Locking — all experience levels welcome.
+                </p>
+              </div>
 
-            {/* Compact Level Guide */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-10 pt-8 border-t border-gray-100">
-              {levelGuide.map((item) => (
-                <div key={item.level} className="flex items-start gap-2.5">
-                  <div
-                    className="w-[3px] h-full min-h-[32px] rounded-full shrink-0 mt-0.5"
-                    style={{ backgroundColor: item.accent }}
-                  />
-                  <div>
-                    <p className="text-xs font-medium text-[#303030]">{item.level}</p>
-                    <p className="text-[11px] text-gray-400 mt-0.5">{item.short}</p>
-                  </div>
+              {/* Right: Level Guide Accordion */}
+              <div>
+                <p className="text-sm font-medium text-[#303030] tracking-[0.15em] uppercase mb-4">
+                  Class Levels
+                </p>
+                <div className="border-t border-gray-100">
+                  {levelGuide.map((item) => {
+                    const isOpen = openLevel === item.level;
+                    return (
+                      <div key={item.level} className="border-b border-gray-100">
+                        <button
+                          onClick={() => setOpenLevel(isOpen ? null : item.level)}
+                          className="w-full flex items-center justify-between py-4 group"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div
+                              className="w-1 h-5 rounded-full shrink-0"
+                              style={{ backgroundColor: item.accent }}
+                            />
+                            <span className="text-[15px] font-medium text-[#303030]">{item.level}</span>
+                            <span className="text-xs text-gray-500 hidden sm:inline">{item.short}</span>
+                          </div>
+                          <motion.svg
+                            animate={{ rotate: isOpen ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="w-4 h-4 text-gray-400 shrink-0"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </motion.svg>
+                        </button>
+                        <AnimatePresence initial={false}>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pb-4 pl-6 pr-2">
+                                <span className={`inline-block text-[11px] font-medium tracking-wider uppercase px-2.5 py-1 rounded-full mb-3 ${item.badge}`}>
+                                  {item.level}
+                                </span>
+                                <p className="text-sm text-gray-500 leading-relaxed">
+                                  {item.description}
+                                </p>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
                 </div>
-              ))}
+              </div>
             </div>
-
-            {/* Trigger */}
-            <button
-              onClick={() => setShowGuide(true)}
-              className="mt-6 text-xs text-gray-400 hover:text-[#303030] transition-colors inline-flex items-center gap-1.5 group"
-            >
-              Not sure which level?
-              <span className="text-[#ffb800] font-medium group-hover:underline">
-                View full guide
-              </span>
-              <svg
-                className="w-3 h-3 text-[#ffb800] group-hover:translate-x-0.5 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
           </div>
         </motion.section>
-
-        {/* Genre Filter Bar */}
-        <section className="bg-white border-b border-gray-100 sticky top-20 z-40" style={{ borderColor: '#f5f5f5' }}>
-          <div className="section-padding !py-0">
-            <div className="flex overflow-x-auto no-scrollbar gap-1">
-              {genres.map((genre) => (
-                <button
-                  key={genre}
-                  onClick={() => { setActiveGenre(genre); setActiveCard(null); }}
-                  className={`relative px-5 py-4 text-sm tracking-wide whitespace-nowrap transition-colors ${
-                    activeGenre === genre
-                      ? 'text-[#303030] font-medium'
-                      : 'text-gray-400 hover:text-gray-600'
-                  }`}
-                >
-                  {genre}
-                  {activeGenre === genre && (
-                    <motion.div
-                      layoutId="genreIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#303030]"
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Full Week Overview */}
         <section id="weekly-overview" className="section-padding bg-[#fafafa]">
           <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-16">
-              <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-4">
+              <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-4 flex items-center gap-3 justify-center">
+                <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                 At a Glance
               </p>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-[#303030] mb-4">
                 Weekly Schedule
               </h2>
-              <p className="text-gray-400 text-sm max-w-lg mx-auto">
+              <p className="text-gray-500 text-sm max-w-lg mx-auto">
                 Our recurring class lineup. Some classes rotate bi-weekly between instructors.
                 For real-time availability and booking, visit{' '}
                 <ExternalLink
                   href="https://evenground.pike13.com/schedule"
-                  className="text-[#ffb800] hover:underline"
+                  className="text-[#8a6b00] hover:underline"
                 >
                   Pike13
                 </ExternalLink>.
@@ -332,7 +335,7 @@ export default function Classes() {
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-2">
                   <span className={`w-4 h-3 rounded-sm ${item.bg} border ${item.border}`} />
-                  <span className="text-xs text-gray-400">{item.label}</span>
+                  <span className="text-xs text-gray-500">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -345,7 +348,7 @@ export default function Classes() {
                     {weekDays.map((day) => (
                       <th
                         key={day}
-                        className="text-xs font-medium tracking-[0.15em] uppercase p-4 text-left border-b-2 text-gray-400 border-gray-100"
+                        className="text-xs font-medium tracking-[0.15em] uppercase p-4 text-left border-b-2 text-gray-500 border-gray-100"
                       >
                         {day}
                       </th>
@@ -361,9 +364,9 @@ export default function Classes() {
                           <td key={day} className="p-2 align-top border-b border-gray-50">
                             {cls ? (
                               <div className={`${overviewBgColors[cls.level] || 'bg-gray-50'} p-3 rounded`}>
-                                <p className="text-[11px] text-gray-400 mb-1">{cls.time}</p>
+                                <p className="text-[11px] text-gray-500 mb-1">{cls.time}</p>
                                 <p className="text-sm font-medium text-[#303030] leading-snug mb-1">{cls.name}</p>
-                                <p className="text-[11px] text-gray-400 leading-relaxed">
+                                <p className="text-[11px] text-gray-500 leading-relaxed">
                                   {cls.biweekly
                                     ? cls.instructor.split(' / ').map((name, idx) => (
                                         <span key={idx}>{idx > 0 && <><br /></>}{name.trim()}</span>
@@ -371,7 +374,7 @@ export default function Classes() {
                                     : cls.instructor}
                                 </p>
                                 {cls.biweekly && (
-                                  <p className="text-[9px] text-purple-500 mt-1.5">Bi-weekly</p>
+                                  <p className="text-[11px] text-purple-500 mt-1.5">Bi-weekly</p>
                                 )}
                               </div>
                             ) : (
@@ -394,7 +397,7 @@ export default function Classes() {
                     <span className="text-sm font-medium text-[#303030]">
                       {day}
                     </span>
-                    <span className="text-xs text-gray-400">
+                    <span className="text-xs text-gray-500">
                       {weeklySchedule[day].length} classes
                     </span>
                   </div>
@@ -412,21 +415,73 @@ export default function Classes() {
           </div>
         </section>
 
+        {/* Info Section */}
+        <section className="section-padding bg-white">
+          <div className="max-w-[900px] mx-auto">
+            <div className="grid md:grid-cols-3 gap-10">
+              <div className="border-l-2 border-[#ffb800] pl-6 py-2">
+                <h3 className="text-lg font-medium text-[#303030] mb-3">First Class Free</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  New to Evenground? Use code FIRSTCLASS at checkout for a complimentary class.
+                </p>
+              </div>
+              <div className="border-l-2 border-[#ffb800] pl-6 py-2">
+                <h3 className="text-lg font-medium text-[#303030] mb-3">All Ages 13+</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  Our studio welcomes dancers aged 13 and above. Saturday kids classes available for younger dancers.
+                </p>
+              </div>
+              <div className="border-l-2 border-[#ffb800] pl-6 py-2">
+                <h3 className="text-lg font-medium text-[#303030] mb-3">No Experience Needed</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  Beginner classes are designed to be welcoming and accessible. Everyone starts somewhere.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Instructor Showcase */}
         <section className="section-padding bg-[#fafafa]">
           <div className="max-w-[1200px] mx-auto">
-            <div className="flex items-center justify-between mb-10">
-              <div>
-                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-2">
-                  Our Instructors
-                </p>
-                <p className="text-sm text-gray-400">
-                  Showing <span className="text-[#303030] font-medium">{filtered.length}</span> {filtered.length === 1 ? 'instructor' : 'instructors'}
-                  {activeGenre !== 'All' && (
-                    <> in <span className="text-[#303030] font-medium">{activeGenre}</span></>
-                  )}
-                </p>
+            <div className="mb-12">
+              <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-4 flex items-center gap-3">
+                <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
+                Meet the Team
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-[#303030] mb-6">
+                Our Instructors
+              </h2>
+
+              {/* Genre Filter */}
+              <div className="flex overflow-x-auto no-scrollbar gap-1 border-b border-gray-200 mb-4">
+                {genres.map((genre) => (
+                  <button
+                    key={genre}
+                    onClick={() => { setActiveGenre(genre); setActiveCard(null); }}
+                    className={`relative px-5 py-3 text-sm tracking-wide whitespace-nowrap transition-colors ${
+                      activeGenre === genre
+                        ? 'text-[#303030] font-medium'
+                        : 'text-gray-500 hover:text-gray-600'
+                    }`}
+                  >
+                    {genre}
+                    {activeGenre === genre && (
+                      <motion.div
+                        layoutId="genreIndicator"
+                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#303030]"
+                        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                ))}
               </div>
+              <p className="text-sm text-gray-500">
+                Showing <span className="text-[#303030] font-medium">{filtered.length}</span> {filtered.length === 1 ? 'instructor' : 'instructors'}
+                {activeGenre !== 'All' && (
+                  <> in <span className="text-[#303030] font-medium">{activeGenre}</span></>
+                )}
+              </p>
             </div>
 
             <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
@@ -458,7 +513,7 @@ export default function Classes() {
                           {inst.genres.map((g) => (
                             <span
                               key={g}
-                              className="text-[9px] font-medium tracking-wide uppercase"
+                              className="text-[11px] font-medium tracking-wide uppercase"
                               style={{ color: genreAccents[g] || '#a3a3a3' }}
                             >
                               {g}
@@ -485,7 +540,7 @@ export default function Classes() {
                             {inst.genres.map((g) => (
                               <span
                                 key={g}
-                                className="text-[9px] font-medium tracking-wide uppercase"
+                                className="text-[11px] font-medium tracking-wide uppercase"
                                 style={{ color: genreAccents[g] === '#303030' ? '#a3a3a3' : genreAccents[g] }}
                               >
                                 {g}
@@ -512,7 +567,7 @@ export default function Classes() {
                           {inst.levels.map((level) => (
                             <span
                               key={level}
-                              className={`text-[9px] font-medium tracking-wider uppercase px-2 py-0.5 rounded-full ${levelColors[level] || 'bg-gray-100 text-gray-600'}`}
+                              className={`text-[11px] font-medium tracking-wider uppercase px-2 py-0.5 rounded-full ${levelColors[level] || 'bg-gray-100 text-gray-600'}`}
                             >
                               {level}
                             </span>
@@ -525,35 +580,9 @@ export default function Classes() {
               </AnimatePresence>
             </motion.div>
 
-            <p className="text-[11px] text-gray-400 text-center mt-6 lg:hidden">
+            <p className="text-[11px] text-gray-500 text-center mt-6 lg:hidden">
               Tap a card to see schedule details
             </p>
-          </div>
-        </section>
-
-        {/* Info Section */}
-        <section className="section-padding bg-white">
-          <div className="max-w-[900px] mx-auto">
-            <div className="grid md:grid-cols-3 gap-10">
-              <div className="border-l-2 border-[#ffb800] pl-6 py-2">
-                <h3 className="text-lg font-medium text-[#303030] mb-3">First Class Free</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  New to Evenground? Use code FIRSTCLASS at checkout for a complimentary class.
-                </p>
-              </div>
-              <div className="border-l-2 border-[#ffb800] pl-6 py-2">
-                <h3 className="text-lg font-medium text-[#303030] mb-3">All Ages 13+</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  Our studio welcomes dancers aged 13 and above. Saturday kids classes available for younger dancers.
-                </p>
-              </div>
-              <div className="border-l-2 border-[#ffb800] pl-6 py-2">
-                <h3 className="text-lg font-medium text-[#303030] mb-3">No Experience Needed</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  Beginner classes are designed to be welcoming and accessible. Everyone starts somewhere.
-                </p>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -579,91 +608,6 @@ export default function Classes() {
         </section>
       </main>
       </PageTransition>
-
-      {/* Level Guide Modal / Bottom Sheet */}
-      <AnimatePresence>
-        {showGuide && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center"
-            onClick={() => setShowGuide(false)}
-          >
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-
-            <motion.div
-              initial={{ y: '100%', opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: '100%', opacity: 0 }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="relative bg-white w-full sm:max-w-lg sm:rounded-2xl rounded-t-2xl max-h-[85vh] overflow-hidden flex flex-col"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="sm:hidden flex justify-center pt-3 pb-1">
-                <div className="w-10 h-1 rounded-full bg-gray-200" />
-              </div>
-
-              <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
-                <div>
-                  <h3 className="text-lg font-medium text-[#303030]">
-                    Class Level Guide
-                  </h3>
-                  <p className="text-xs text-gray-400 mt-0.5">
-                    Find the right class for your experience
-                  </p>
-                </div>
-                <button
-                  onClick={() => setShowGuide(false)}
-                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors text-gray-400 hover:text-gray-600"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-
-              <div className="overflow-y-auto px-6 py-6 space-y-5">
-                {levelGuide.map((item, i) => (
-                  <motion.div
-                    key={item.level}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.08 }}
-                    className="flex gap-4"
-                  >
-                    <div
-                      className="w-[3px] rounded-full shrink-0"
-                      style={{ backgroundColor: item.accent }}
-                    />
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2.5 mb-2">
-                        <span
-                          className={`text-[10px] font-medium tracking-wider uppercase px-2.5 py-1 rounded-full ${item.badge}`}
-                        >
-                          {item.level}
-                        </span>
-                      </div>
-                      <p className="text-sm text-gray-500 leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="border-t border-gray-100 px-6 py-4 bg-[#fafafa]">
-                <p className="text-[11px] text-gray-400 text-center">
-                  Your first class is free — use code{' '}
-                  <span className="font-medium text-[#303030]">FIRSTCLASS</span>{' '}
-                  at checkout
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <Footer />
     </>

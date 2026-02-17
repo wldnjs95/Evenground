@@ -104,7 +104,7 @@ export default function LinksPage() {
           className="mx-auto mb-3 invert brightness-200"
           priority
         />
-        <p className="text-[12px] text-white/40 tracking-[0.15em] uppercase">
+        <p className="text-[12px] text-white/70 tracking-[0.15em] uppercase">
           @evengroundtx
         </p>
       </motion.div>
@@ -131,20 +131,20 @@ export default function LinksPage() {
                 <p className={`text-[15px] font-medium ${link.accent ? 'text-[#ffb800]' : 'text-white'}`}>
                   {link.label}
                 </p>
-                <p className="text-[11px] text-white/40 mt-0.5">
+                <p className="text-[11px] text-white/70 mt-0.5">
                   {link.description}
                 </p>
               </div>
               <div className="shrink-0 flex items-center gap-2">
                 {link.external && link.platform && (
-                  <span className="text-[9px] text-white/25 tracking-wider uppercase hidden sm:inline">
+                  <span className="text-[11px] text-white/60 tracking-wider uppercase hidden sm:inline">
                     {link.platform}
                   </span>
                 )}
                 {link.external ? (
-                  <ArrowIcon className="w-4 h-4 text-white/30 group-hover:text-white/50 transition-colors" />
+                  <ArrowIcon className="w-4 h-4 text-white/50 group-hover:text-white/70 transition-colors" />
                 ) : (
-                  <ChevronIcon className="w-4 h-4 text-white/30 group-hover:text-white/50 transition-colors" />
+                  <ChevronIcon className="w-4 h-4 text-white/50 group-hover:text-white/70 transition-colors" />
                 )}
               </div>
             </>
@@ -182,7 +182,7 @@ export default function LinksPage() {
           href="https://instagram.com/evengroundtx"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-white/30 hover:text-[#ffb800] transition-colors"
+          className="text-white/50 hover:text-[#ffb800] transition-colors"
           aria-label="Instagram"
         >
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -193,7 +193,7 @@ export default function LinksPage() {
           href="https://youtube.com/@evengroundtx"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-white/30 hover:text-[#ffb800] transition-colors"
+          className="text-white/50 hover:text-[#ffb800] transition-colors"
           aria-label="YouTube"
         >
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -204,7 +204,7 @@ export default function LinksPage() {
 
       {/* Website Link */}
       <motion.p
-        className="mt-6 text-[10px] text-white/20 tracking-[0.15em] uppercase"
+        className="mt-6 text-[11px] text-white/60 tracking-[0.15em] uppercase"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.7, ease }}

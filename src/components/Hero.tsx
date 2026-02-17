@@ -88,7 +88,7 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
         <div className="flex flex-col items-center gap-2 text-white/60">
-          <span className="text-[10px] tracking-[0.2em] uppercase">Scroll</span>
+          <span className="text-[11px] tracking-[0.2em] uppercase">Scroll</span>
           <div className="w-[1px] h-8 bg-white/40 relative overflow-hidden">
             <motion.div
               className="absolute top-0 left-0 w-full bg-white"

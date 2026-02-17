@@ -64,7 +64,7 @@ const shortDays: Record<DayKey, string> = {
 };
 
 const levelColors: Record<string, string> = {
-  'Beginner': 'bg-[#e6efe6] text-[#4a7a4a]',
+  'Beginner': 'bg-[#e6efe6] text-[#3d6b3d]',
   'Intermediate': 'bg-[#f0ead8] text-[#6b5a35]',
   'Int/Adv': 'bg-[#f0e2e2] text-[#7a4545]',
   'Advanced': 'bg-[#f0e2e2] text-[#7a4545]',
@@ -117,7 +117,8 @@ export default function Schedule() {
           transition={{ duration: 0.6 }}
         >
           <div className="max-w-[900px]">
-            <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
+            <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
+              <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
               This Week's Schedule
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-8">
@@ -132,7 +133,7 @@ export default function Schedule() {
               href="https://evenground.pike13.com/schedule"
               platform="Pike13"
               showPlatform
-              className="btn btn-dark inline-flex items-center gap-2"
+              className="btn btn-gold inline-flex items-center gap-2"
             >
               Sign Up for Class
             </ExternalLink>
@@ -150,7 +151,7 @@ export default function Schedule() {
                   className={`relative px-5 py-4 text-sm tracking-wide whitespace-nowrap transition-colors ${
                     selectedDay === day
                       ? 'text-[#303030] font-medium'
-                      : 'text-gray-400 hover:text-gray-600'
+                      : 'text-gray-500 hover:text-gray-600'
                   }`}
                 >
                   <span className="hidden sm:inline">{day}</span>
@@ -177,11 +178,11 @@ export default function Schedule() {
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl md:text-3xl font-light text-[#303030]">
                 {selectedDay}
-                <span className="text-sm md:text-base font-normal text-gray-400 ml-3">
+                <span className="text-sm md:text-base font-normal text-gray-500 ml-3">
                   {getDateForDay(selectedDay)}
                 </span>
               </h2>
-              <p className="text-xs text-gray-400 tracking-wider uppercase">
+              <p className="text-xs text-gray-500 tracking-wider uppercase">
                 {scheduleData[selectedDay].length} {scheduleData[selectedDay].length === 1 ? 'class' : 'classes'}
               </p>
             </div>
@@ -203,7 +204,7 @@ export default function Schedule() {
                     {/* Time */}
                     <div className="md:w-24 shrink-0">
                       <p className="text-lg font-light text-[#303030]">{cls.time}</p>
-                      <p className="text-[11px] text-gray-400">{cls.duration}</p>
+                      <p className="text-[11px] text-gray-500">{cls.duration}</p>
                     </div>
 
                     {/* Divider */}
@@ -221,7 +222,7 @@ export default function Schedule() {
                             : cls.instructor}
                         </p>
                         {cls.biweekly && (
-                          <span className="text-[9px] font-medium tracking-wider uppercase px-2 py-0.5 rounded-full bg-purple-50 text-purple-600">
+                          <span className="text-[11px] font-medium tracking-wider uppercase px-2 py-0.5 rounded-full bg-purple-50 text-purple-600">
                             Bi-weekly
                           </span>
                         )}
@@ -230,12 +231,12 @@ export default function Schedule() {
 
                     {/* Level Badge + Book */}
                     <div className="flex items-center gap-3">
-                      <span className={`text-[10px] font-medium tracking-wider uppercase px-3 py-1.5 rounded-full ${levelColors[cls.level] || 'bg-gray-100 text-gray-600'}`}>
+                      <span className={`text-[11px] font-medium tracking-wider uppercase px-3 py-1.5 rounded-full ${levelColors[cls.level] || 'bg-gray-100 text-gray-600'}`}>
                         {cls.level}
                       </span>
                       <ExternalLink
                         href="https://evenground.pike13.com/schedule"
-                        className="text-[12px] font-medium tracking-[0.1em] uppercase text-gray-400 hover:text-[#303030] transition-colors hidden md:flex items-center gap-1"
+                        className="text-[12px] font-medium tracking-[0.1em] uppercase text-gray-500 hover:text-[#303030] transition-colors hidden md:flex items-center gap-1"
                       >
                         Book
                       </ExternalLink>
@@ -255,7 +256,7 @@ export default function Schedule() {
                 <p className="text-sm text-[#303030] font-medium">
                   Looking for the full recurring weekly schedule?
                 </p>
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-gray-500 mt-1">
                   See all classes across the week at a glance.
                 </p>
               </div>

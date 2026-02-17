@@ -51,7 +51,7 @@ export default function ProjectA() {
                 <AnimatedSection variant="fade-in-up">
                   <div className="flex items-center gap-3 mb-8">
                     <span
-                      className="text-[10px] font-medium tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border"
+                      className="text-[11px] font-medium tracking-[0.15em] uppercase px-3 py-1.5 rounded-full border"
                       style={{
                         borderColor: teamData.accent,
                         color: teamData.accent,
@@ -60,7 +60,7 @@ export default function ProjectA() {
                       Est. {teamData.founded}
                     </span>
                     <span
-                      className="text-[10px] font-medium tracking-[0.15em] uppercase"
+                      className="text-[11px] font-medium tracking-[0.15em] uppercase"
                       style={{ color: teamData.accent }}
                     >
                       {teamData.tagline}
@@ -79,7 +79,7 @@ export default function ProjectA() {
                     {teamData.styles.map((style) => (
                       <span
                         key={style}
-                        className="text-[10px] font-medium tracking-wider uppercase px-3 py-1.5 rounded-full"
+                        className="text-[11px] font-medium tracking-wider uppercase px-3 py-1.5 rounded-full"
                         style={{
                           backgroundColor: `${teamData.accent}15`,
                           color: teamData.accent,
@@ -121,19 +121,19 @@ export default function ProjectA() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 pt-10 border-t border-gray-100">
                   <div>
                     <p className="text-3xl font-light text-[#303030]">{teamData.members.length}</p>
-                    <p className="text-[12px] text-gray-400 tracking-[0.1em] uppercase mt-1">Members</p>
+                    <p className="text-[12px] text-gray-500 tracking-[0.1em] uppercase mt-1">Members</p>
                   </div>
                   <div>
                     <p className="text-3xl font-light text-[#303030]">{teamData.styles.length}</p>
-                    <p className="text-[12px] text-gray-400 tracking-[0.1em] uppercase mt-1">Styles</p>
+                    <p className="text-[12px] text-gray-500 tracking-[0.1em] uppercase mt-1">Styles</p>
                   </div>
                   <div>
                     <p className="text-3xl font-light text-[#303030]">{teamData.founded}</p>
-                    <p className="text-[12px] text-gray-400 tracking-[0.1em] uppercase mt-1">Founded</p>
+                    <p className="text-[12px] text-gray-500 tracking-[0.1em] uppercase mt-1">Founded</p>
                   </div>
                   <div>
                     <p className="text-3xl font-light text-[#303030]">{teamData.achievements.length}</p>
-                    <p className="text-[12px] text-gray-400 tracking-[0.1em] uppercase mt-1">Highlights</p>
+                    <p className="text-[12px] text-gray-500 tracking-[0.1em] uppercase mt-1">Highlights</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -190,7 +190,7 @@ export default function ProjectA() {
                         (e.currentTarget as HTMLElement).style.boxShadow = `0 0 0 3px transparent`;
                       }}
                     >
-                      <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+                      <div className="absolute inset-0 flex items-center justify-center text-gray-500">
                         <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                         </svg>
@@ -199,7 +199,7 @@ export default function ProjectA() {
                     <p className="text-sm tracking-[0.05em] text-[#303030] font-medium text-center">
                       {member.name}
                     </p>
-                    <p className="text-[11px] text-gray-400 mt-1 text-center">
+                    <p className="text-[11px] text-gray-500 mt-1 text-center">
                       {member.role}
                     </p>
                   </AnimatedChild>

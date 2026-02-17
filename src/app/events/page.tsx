@@ -19,7 +19,8 @@ export default function Events() {
           <section className="section-padding bg-white">
             <div className="max-w-[900px]">
               <AnimatedSection variant="fade-in-up">
-                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
+                <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
+                  <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                   Battles &amp; Showcases
                 </p>
               </AnimatedSection>
@@ -92,7 +93,7 @@ export default function Events() {
                     <p className="text-3xl md:text-4xl font-light tracking-tight text-[#ffb800]">
                       10+
                     </p>
-                    <p className="text-xs text-white/40 uppercase tracking-[0.15em] mt-1">
+                    <p className="text-xs text-white/60 uppercase tracking-[0.15em] mt-1">
                       Battles
                     </p>
                   </div>
@@ -102,7 +103,7 @@ export default function Events() {
                     <p className="text-3xl md:text-4xl font-light tracking-tight text-[#ffb800]">
                       100+
                     </p>
-                    <p className="text-xs text-white/40 uppercase tracking-[0.15em] mt-1">
+                    <p className="text-xs text-white/60 uppercase tracking-[0.15em] mt-1">
                       Attendees
                     </p>
                   </div>
@@ -112,7 +113,7 @@ export default function Events() {
                     <p className="text-3xl md:text-4xl font-light tracking-tight text-[#ffb800]">
                       TX
                     </p>
-                    <p className="text-xs text-white/40 uppercase tracking-[0.15em] mt-1">
+                    <p className="text-xs text-white/60 uppercase tracking-[0.15em] mt-1">
                       State-wide
                     </p>
                   </div>
@@ -128,7 +129,7 @@ export default function Events() {
                   <p className="text-2xl md:text-3xl font-light tracking-tight mb-2">
                     Saturday, March 14th, 2026
                   </p>
-                  <div className="flex items-center gap-2 text-sm text-white/40 mb-8">
+                  <div className="flex items-center gap-2 text-sm text-white/60 mb-8">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -191,7 +192,7 @@ export default function Events() {
                       </svg>
                       FREE
                     </span>
-                    <span className="text-white/40 text-xs uppercase tracking-wider">
+                    <span className="text-white/60 text-xs uppercase tracking-wider">
                       All Levels Welcome
                     </span>
                   </div>
@@ -207,7 +208,8 @@ export default function Events() {
             <div className="max-w-[1200px] mx-auto relative z-10">
               {/* Header */}
               <AnimatedSection variant="fade-in-up">
-                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
+                <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
+                  <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                   Annual Showcase
                 </p>
               </AnimatedSection>
@@ -231,7 +233,8 @@ export default function Events() {
               {/* Event Detail Card */}
               <AnimatedSection variant="fade-in-up">
                 <div className="border border-gray-200 bg-white p-8 md:p-10 max-w-2xl">
-                  <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-4">
+                  <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-4 flex items-center gap-3">
+                    <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                     Latest Edition
                   </p>
                   <p className="text-2xl md:text-3xl font-light tracking-tight text-[#1a1a1a] mb-6">
@@ -240,19 +243,19 @@ export default function Events() {
 
                   <div className="space-y-3 mb-8">
                     <div className="flex items-center gap-3 text-sm text-gray-500">
-                      <svg className="w-4 h-4 text-[#ffb800] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-[#b38200] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                       November 8th, 2025
                     </div>
                     <div className="flex items-center gap-3 text-sm text-gray-500">
-                      <svg className="w-4 h-4 text-[#ffb800] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-[#b38200] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6l4 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                       Doors Open 6:30PM / Show Starts 7:00PM
                     </div>
                     <div className="flex items-center gap-3 text-sm text-gray-500">
-                      <svg className="w-4 h-4 text-[#ffb800] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 text-[#b38200] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>

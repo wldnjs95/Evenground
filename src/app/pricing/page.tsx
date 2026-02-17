@@ -45,7 +45,8 @@ export default function Pricing() {
           <section className="section-padding bg-white">
             <div className="max-w-[900px]">
               <AnimatedSection variant="fade-in-up">
-                <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
+                <p className="text-[13px] font-medium text-[#303030] tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
+                  <span className="w-6 h-[2px] bg-[#ffb800] inline-block shrink-0" />
                   Simple &amp; Transparent
                 </p>
               </AnimatedSection>
@@ -74,7 +75,7 @@ export default function Pricing() {
                         transition={{ duration: 0.2 }}
                         className="bg-white p-8 lg:p-10 border border-gray-100 group-hover:border-gray-200 transition-colors h-full"
                       >
-                        <div className="w-12 h-12 flex items-center justify-center mb-6 border border-gray-100 text-gray-400 group-hover:border-[#ffb800]/30 group-hover:text-[#ffb800] transition-colors">
+                        <div className="w-12 h-12 flex items-center justify-center mb-6 border border-gray-100 text-gray-500 group-hover:border-[#ffb800]/30 group-hover:text-[#ffb800] transition-colors">
                           {option.icon}
                         </div>
                         <p className="text-[12px] font-medium text-[#d49a00] tracking-[0.15em] uppercase mb-2">
