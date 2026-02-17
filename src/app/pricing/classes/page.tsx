@@ -6,6 +6,7 @@ import PageTransition from '@/components/PageTransition';
 import AnimatedSection, { AnimatedChild } from '@/components/AnimatedSection';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import ExternalLink from '@/components/ExternalLink';
 
 const classPacks = [
   { name: 'Single Class', price: 20, perClass: null, description: 'Drop-in' },
@@ -181,12 +182,14 @@ export default function ClassPricing() {
                 whileTap={{ scale: 0.98 }}
                 className="inline-block"
               >
-                <Link
-                  href="#"
-                  className="btn btn-gold"
+                <ExternalLink
+                  href="https://evenground.pike13.com/schedule"
+                  platform="Pike13"
+                  showPlatform
+                  className="btn btn-gold inline-flex items-center gap-2"
                 >
                   Sign Up for Class
-                </Link>
+                </ExternalLink>
               </motion.div>
             </AnimatedSection>
           </section>
