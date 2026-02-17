@@ -62,24 +62,22 @@ export default function Hero() {
           />
         </motion.div>
 
-        <div className="flex flex-col items-center gap-8 md:gap-10">
-          <motion.p
-            variants={itemVariants}
-            className="text-base md:text-lg text-white/90 max-w-xl font-light leading-relaxed text-center"
-          >
-            Evenground is the latest street-style dance studio in Austin, Texas that aims to provide a safe home for dancers, elevate their craft, and cultivate a supportive community.
-          </motion.p>
+        <motion.p
+          variants={itemVariants}
+          className="text-white/70 text-sm md:text-base tracking-[0.15em] uppercase font-medium mb-10"
+        >
+          Evenground Dance Studio
+        </motion.p>
 
-          <motion.a
-            variants={itemVariants}
-            href="/about-us"
-            className="btn btn-white"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Learn More
-          </motion.a>
-        </div>
+        <motion.a
+          variants={itemVariants}
+          href="/classes"
+          className="btn btn-white"
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          View Classes
+        </motion.a>
       </motion.div>
 
       {/* Scroll Indicator */}

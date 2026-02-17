@@ -41,7 +41,7 @@ export default function Section({
           {/* Content */}
           <div className={`${reverse ? 'lg:order-1' : ''} lg:px-8`}>
             {subtitle && (
-              <p className="text-[13px] font-medium text-gray-400 tracking-[0.2em] uppercase mb-6">
+              <p className="text-[14px] font-medium text-gray-600 tracking-[0.2em] uppercase mb-6">
                 {subtitle}
               </p>
             )}

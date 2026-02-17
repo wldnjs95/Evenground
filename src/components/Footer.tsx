@@ -8,11 +8,11 @@ export default function Footer() {
       <div className="section-padding !py-16 lg:!py-24">
         {/* Top Section - Brand */}
         <div className="pb-12 lg:pb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-[#303030]">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-[#303030]">
             EVENGROUND
           </h2>
-          <p className="text-gray-500 mt-3 text-sm">
-            Dance Studio in Austin, TX
+          <p className="text-gray-600 mt-3 text-sm">
+            Dance Studio Based in Austin, TX
           </p>
         </div>
 
@@ -20,20 +20,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pt-12 lg:pt-16 border-t border-gray-200">
           {/* Hours */}
           <div>
-            <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-[#ffb800] mb-6">
+            <h4 className="text-[19px] font-semibold tracking-[0.2em] uppercase text-[#303030] mb-6">
               Hours
             </h4>
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex justify-between">
-                <span className="text-gray-400">Mon - Fri</span>
+                <span className="text-gray-500">Mon - Fri</span>
                 <span>6PM - 10:30PM</span>
               </li>
               <li className="flex justify-between">
-                <span className="text-gray-400">Saturday</span>
+                <span className="text-gray-500">Saturday</span>
                 <span>1PM - 5:30PM</span>
               </li>
               <li className="flex justify-between">
-                <span className="text-gray-400">Sunday</span>
+                <span className="text-gray-500">Sunday</span>
                 <span>8PM - 10PM</span>
               </li>
             </ul>
@@ -41,7 +41,7 @@ export default function Footer() {
 
           {/* Location */}
           <div>
-            <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-[#ffb800] mb-6">
+            <h4 className="text-[19px] font-semibold tracking-[0.2em] uppercase text-[#303030] mb-6">
               Location
             </h4>
             <address className="not-italic text-sm text-gray-600 leading-relaxed">
@@ -50,7 +50,7 @@ export default function Footer() {
             </address>
             <ExternalLink
               href="https://maps.app.goo.gl/FViU5GP33kaYGPqA6"
-              className="inline-flex items-center gap-1.5 text-xs text-gray-400 hover:text-[#ffb800] transition-colors mt-3"
+              className="inline-flex items-center gap-1.5 text-xs text-gray-600 hover:text-[#b38200] transition-colors mt-3"
             >
               Get Directions
             </ExternalLink>
@@ -58,7 +58,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-[#ffb800] mb-6">
+            <h4 className="text-[19px] font-semibold tracking-[0.2em] uppercase text-[#303030] mb-6">
               Contact
             </h4>
             <a
@@ -71,7 +71,7 @@ export default function Footer() {
 
           {/* Follow */}
           <div>
-            <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-[#ffb800] mb-6">
+            <h4 className="text-[19px] font-semibold tracking-[0.2em] uppercase text-[#303030] mb-6">
               Follow
             </h4>
             <div className="flex flex-col gap-3">
@@ -101,10 +101,10 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-gray-200">
         <div className="section-padding !py-5 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-[11px]">
+          <p className="text-gray-600 text-[11px]">
             &copy; {new Date().getFullYear()} Evenground. All rights reserved.
           </p>
-          <div className="flex gap-6 text-[11px] text-gray-400">
+          <div className="flex gap-6 text-[11px] text-gray-600">
             <Link href="#classes" className="hover:text-[#303030] transition-colors">Classes</Link>
             <Link href="#pricing" className="hover:text-[#303030] transition-colors">Pricing</Link>
             <Link href="/about-us" className="hover:text-[#303030] transition-colors">About</Link>

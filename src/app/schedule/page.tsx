@@ -87,6 +87,18 @@ function getTodayKey(): DayKey {
   return dayMap[jsDay - 1];
 }
 
+function getDateForDay(day: DayKey): string {
+  const today = new Date();
+  const currentJsDay = today.getDay(); // 0=Sun
+  const dayIndex: Record<DayKey, number> = {
+    Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5, Saturday: 6,
+  };
+  const diff = dayIndex[day] - currentJsDay;
+  const target = new Date(today);
+  target.setDate(today.getDate() + diff);
+  return target.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+}
+
 export default function Schedule() {
   const todayKey = getTodayKey();
   const [selectedDay, setSelectedDay] = useState<DayKey>(todayKey);
@@ -106,35 +118,24 @@ export default function Schedule() {
         >
           <div className="max-w-[900px]">
             <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-6">
-              Weekly Timetable
+              This Week's Schedule
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-8">
               SCHEDULE
             </h1>
             <p className="text-gray-500 max-w-xl mb-8">
-              Our recurring weekly class schedule. Classes run Monday through
+              This week's class schedule. Classes run Monday through
               Saturday. Some classes rotate bi-weekly between instructors.
             </p>
 
-            {/* Pike13 Banner */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-5 bg-[#fafafa] border border-gray-100 max-w-xl">
-              <div className="flex-1">
-                <p className="text-sm text-[#303030] font-medium mb-1">
-                  Book your spot
-                </p>
-                <p className="text-xs text-gray-400 leading-relaxed">
-                  For real-time availability, instructor updates, and class
-                  registration, visit our booking platform.
-                </p>
-              </div>
-              <ExternalLink
-                href="https://evenground.pike13.com/schedule"
-                platform="Pike13"
-                className="btn btn-dark text-[11px] shrink-0"
-              >
-                Open Pike13
-              </ExternalLink>
-            </div>
+            <ExternalLink
+              href="https://evenground.pike13.com/schedule"
+              platform="Pike13"
+              showPlatform
+              className="btn btn-dark inline-flex items-center gap-2"
+            >
+              Sign Up for Class
+            </ExternalLink>
           </div>
         </motion.section>
 
@@ -176,6 +177,9 @@ export default function Schedule() {
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl md:text-3xl font-light text-[#303030]">
                 {selectedDay}
+                <span className="text-sm md:text-base font-normal text-gray-400 ml-3">
+                  {getDateForDay(selectedDay)}
+                </span>
               </h2>
               <p className="text-xs text-gray-400 tracking-wider uppercase">
                 {scheduleData[selectedDay].length} {scheduleData[selectedDay].length === 1 ? 'class' : 'classes'}

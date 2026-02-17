@@ -34,7 +34,7 @@ const links: LinkItem[] = [
   {
     label: 'Rent the Studio',
     description: 'Book private studio time',
-    href: 'https://dnce.club',
+    href: 'https://dnce.club/evengroundtx',
     platform: 'dnce.club',
     external: true,
   },

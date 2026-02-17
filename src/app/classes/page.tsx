@@ -300,6 +300,118 @@ export default function Classes() {
           </div>
         </section>
 
+        {/* Full Week Overview */}
+        <section id="weekly-overview" className="section-padding bg-[#fafafa]">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="text-center mb-16">
+              <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-4">
+                At a Glance
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-[#303030] mb-4">
+                Weekly Schedule
+              </h2>
+              <p className="text-gray-400 text-sm max-w-lg mx-auto">
+                Our recurring class lineup. Some classes rotate bi-weekly between instructors.
+                For real-time availability and booking, visit{' '}
+                <ExternalLink
+                  href="https://evenground.pike13.com/schedule"
+                  className="text-[#ffb800] hover:underline"
+                >
+                  Pike13
+                </ExternalLink>.
+              </p>
+            </div>
+
+            {/* Color Legend */}
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-12">
+              {[
+                { label: 'Beginner', bg: 'bg-[#e6efe6]', border: 'border-[#c0d4c0]' },
+                { label: 'Intermediate', bg: 'bg-[#f0ead8]', border: 'border-[#d4c8a8]' },
+                { label: 'Int/Advanced', bg: 'bg-[#f0e2e2]', border: 'border-[#d4bcbc]' },
+                { label: 'Open Level', bg: 'bg-[#e2e6f0]', border: 'border-[#bcc4d8]' },
+              ].map((item) => (
+                <div key={item.label} className="flex items-center gap-2">
+                  <span className={`w-4 h-3 rounded-sm ${item.bg} border ${item.border}`} />
+                  <span className="text-xs text-gray-400">{item.label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Grid */}
+            <div className="hidden lg:block overflow-x-auto">
+              <table className="w-full border-collapse min-w-[900px]">
+                <thead>
+                  <tr>
+                    {weekDays.map((day) => (
+                      <th
+                        key={day}
+                        className="text-xs font-medium tracking-[0.15em] uppercase p-4 text-left border-b-2 text-gray-400 border-gray-100"
+                      >
+                        {day}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {Array.from({ length: Math.max(...weekDays.map(d => weeklySchedule[d].length)) }).map((_, rowIdx) => (
+                    <tr key={rowIdx}>
+                      {weekDays.map((day) => {
+                        const cls = weeklySchedule[day][rowIdx];
+                        return (
+                          <td key={day} className="p-2 align-top border-b border-gray-50">
+                            {cls ? (
+                              <div className={`${overviewBgColors[cls.level] || 'bg-gray-50'} p-3 rounded`}>
+                                <p className="text-[11px] text-gray-400 mb-1">{cls.time}</p>
+                                <p className="text-sm font-medium text-[#303030] leading-snug mb-1">{cls.name}</p>
+                                <p className="text-[11px] text-gray-400 leading-relaxed">
+                                  {cls.biweekly
+                                    ? cls.instructor.split(' / ').map((name, idx) => (
+                                        <span key={idx}>{idx > 0 && <><br /></>}{name.trim()}</span>
+                                      ))
+                                    : cls.instructor}
+                                </p>
+                                {cls.biweekly && (
+                                  <p className="text-[9px] text-purple-500 mt-1.5">Bi-weekly</p>
+                                )}
+                              </div>
+                            ) : (
+                              <div className="p-3" />
+                            )}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Compact View */}
+            <div className="lg:hidden space-y-6">
+              {weekDays.map((day) => (
+                <div key={day}>
+                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
+                    <span className="text-sm font-medium text-[#303030]">
+                      {day}
+                    </span>
+                    <span className="text-xs text-gray-400">
+                      {weeklySchedule[day].length} classes
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {weeklySchedule[day].map((cls, i) => (
+                      <div key={i} className={`text-[11px] ${overviewBgColors[cls.level] || 'bg-gray-50'} px-3 py-2 rounded text-gray-500`}>
+                        <span className="text-[#303030] font-medium">{cls.time}</span> {cls.name}
+                        {cls.biweekly && <span className="text-purple-500 ml-1">·bi</span>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Instructor Showcase */}
         <section className="section-padding bg-[#fafafa]">
           <div className="max-w-[1200px] mx-auto">
@@ -419,118 +531,6 @@ export default function Classes() {
           </div>
         </section>
 
-        {/* Full Week Overview */}
-        <section id="weekly-overview" className="section-padding bg-[#fafafa]">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="text-center mb-16">
-              <p className="text-[13px] font-medium text-[#ffb800] tracking-[0.2em] uppercase mb-4">
-                At a Glance
-              </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-[#303030] mb-4">
-                Weekly Schedule
-              </h2>
-              <p className="text-gray-400 text-sm max-w-lg mx-auto">
-                Our recurring class lineup. Some classes rotate bi-weekly between instructors.
-                For real-time availability and booking, visit{' '}
-                <ExternalLink
-                  href="https://evenground.pike13.com/schedule"
-                  className="text-[#ffb800] hover:underline"
-                >
-                  Pike13
-                </ExternalLink>.
-              </p>
-            </div>
-
-            {/* Color Legend */}
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-12">
-              {[
-                { label: 'Beginner', bg: 'bg-[#e6efe6]', border: 'border-[#c0d4c0]' },
-                { label: 'Intermediate', bg: 'bg-[#f0ead8]', border: 'border-[#d4c8a8]' },
-                { label: 'Int/Advanced', bg: 'bg-[#f0e2e2]', border: 'border-[#d4bcbc]' },
-                { label: 'Open Level', bg: 'bg-[#e2e6f0]', border: 'border-[#bcc4d8]' },
-              ].map((item) => (
-                <div key={item.label} className="flex items-center gap-2">
-                  <span className={`w-4 h-3 rounded-sm ${item.bg} border ${item.border}`} />
-                  <span className="text-xs text-gray-400">{item.label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Desktop Grid */}
-            <div className="hidden lg:block overflow-x-auto">
-              <table className="w-full border-collapse min-w-[900px]">
-                <thead>
-                  <tr>
-                    {weekDays.map((day) => (
-                      <th
-                        key={day}
-                        className="text-xs font-medium tracking-[0.15em] uppercase p-4 text-left border-b-2 text-gray-400 border-gray-100"
-                      >
-                        {day}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {Array.from({ length: Math.max(...weekDays.map(d => weeklySchedule[d].length)) }).map((_, rowIdx) => (
-                    <tr key={rowIdx}>
-                      {weekDays.map((day) => {
-                        const cls = weeklySchedule[day][rowIdx];
-                        return (
-                          <td key={day} className="p-2 align-top border-b border-gray-50">
-                            {cls ? (
-                              <div className={`${overviewBgColors[cls.level] || 'bg-gray-50'} p-3 rounded`}>
-                                <p className="text-[11px] text-gray-400 mb-1">{cls.time}</p>
-                                <p className="text-sm font-medium text-[#303030] leading-snug mb-1">{cls.name}</p>
-                                <p className="text-[11px] text-gray-400 leading-relaxed">
-                                  {cls.biweekly
-                                    ? cls.instructor.split(' / ').map((name, idx) => (
-                                        <span key={idx}>{idx > 0 && <><br /></>}{name.trim()}</span>
-                                      ))
-                                    : cls.instructor}
-                                </p>
-                                {cls.biweekly && (
-                                  <p className="text-[9px] text-purple-500 mt-1.5">Bi-weekly</p>
-                                )}
-                              </div>
-                            ) : (
-                              <div className="p-3" />
-                            )}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Mobile Compact View */}
-            <div className="lg:hidden space-y-6">
-              {weekDays.map((day) => (
-                <div key={day}>
-                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                    <span className="text-sm font-medium text-[#303030]">
-                      {day}
-                    </span>
-                    <span className="text-xs text-gray-400">
-                      {weeklySchedule[day].length} classes
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {weeklySchedule[day].map((cls, i) => (
-                      <div key={i} className={`text-[11px] ${overviewBgColors[cls.level] || 'bg-gray-50'} px-3 py-2 rounded text-gray-500`}>
-                        <span className="text-[#303030] font-medium">{cls.time}</span> {cls.name}
-                        {cls.biweekly && <span className="text-purple-500 ml-1">·bi</span>}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Info Section */}
         <section className="section-padding bg-white">
           <div className="max-w-[900px] mx-auto">
@@ -573,7 +573,7 @@ export default function Classes() {
               href="/schedule"
               className="btn btn-gold"
             >
-              View Schedule
+              This Week's Classes
             </a>
           </div>
         </section>
