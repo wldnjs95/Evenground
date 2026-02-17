@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageTransition from '@/components/PageTransition';
 import ExternalLink from '@/components/ExternalLink';
 import { weeklySchedule, weekDays, shortDayMap, type DayKey } from '@/data/schedule';
+import { instructors as instructorData } from '@/data/instructors';
 
 /* ------------------------------------------------------------------ */
 /*  Instructor Data (derived from weekly schedule)                     */
@@ -72,6 +74,9 @@ function deriveInstructors(): Instructor[] {
 
 const instructors = deriveInstructors();
 const genres = ['All', ...Array.from(new Set(instructors.flatMap((i) => i.genres))).sort()];
+
+// Photo lookup: instructor name → photo URL
+const photoMap = new Map(instructorData.map((i) => [i.name, i.photo]));
 
 /* ------------------------------------------------------------------ */
 /*  Styles & Config                                                    */
@@ -449,10 +454,22 @@ export default function Classes() {
                       >
                         {/* Default: Avatar + Name + Genre + Levels */}
                         <div className="flex flex-col items-center justify-center text-center px-4 py-8 sm:py-10">
-                          <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-4">
-                            <svg className="w-9 h-9 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                            </svg>
+                          <div className="w-20 h-20 rounded-full bg-gray-100 overflow-hidden mb-4 relative">
+                            {photoMap.get(inst.name) ? (
+                              <Image
+                                src={photoMap.get(inst.name)!}
+                                alt={inst.name}
+                                fill
+                                className="object-cover object-top"
+                                sizes="80px"
+                              />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center">
+                                <svg className="w-9 h-9 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                              </div>
+                            )}
                           </div>
                           <p className="text-sm font-medium text-[#303030] mb-1.5">
                             {inst.name}
